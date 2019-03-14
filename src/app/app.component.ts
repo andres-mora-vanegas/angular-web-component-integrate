@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import './wc-mood/wc-mood';
+import './vanillajs-component/modal';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   }
 
   randomMood() {
-    const index = Math.floor(Math.random()*this.moods.length);
+    const index = Math.floor(Math.random() * this.moods.length);
     if (this.mood === this.moods[index]) {
       return this.randomMood();
     }
@@ -31,12 +32,12 @@ export class AppComponent {
     }, 1000);
   }
 
-  public get mood():string {
+  public get mood(): string {
     return this._mood;
   }
 
-  public set mood(value:string) {
-    if(this._mood !== value) {
+  public set mood(value: string) {
+    if (this._mood !== value) {
       this._mood = value;
       this.moodChanged();
     }
