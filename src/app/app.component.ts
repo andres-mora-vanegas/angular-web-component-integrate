@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2, ElementRef, ViewChild } from '@angular/core';
 
 import './wc-mood/wc-mood';
 import './vanillajs-component/modal';
@@ -9,12 +9,26 @@ import './vanillajs-component/modal';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private moods: Array<string> = ['awesome', 'formidable', 'great', 'terrifying', 'wonderful', 'astonishing', 'breathtaking'];
+  @ViewChild('modal') modal: ElementRef;
+
+  private moods: Array<string> = [
+    'awesome',
+    'formidable',
+    'great',
+    'terrifying',
+    'wonderful',
+    'astonishing',
+    'breathtaking'
+  ];
   private _mood: string;
   isChanged: boolean = false;
 
-  constructor() {
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {
     this.randomMood();
+  }
+
+  open() {
+    this.modal.nativeElement.open();
   }
 
   randomMood() {
@@ -33,10 +47,12 @@ export class AppComponent {
   }
 
   public get mood(): string {
+    console.log('lectura');
     return this._mood;
   }
 
   public set mood(value: string) {
+    console.log('escritura');
     if (this._mood !== value) {
       this._mood = value;
       this.moodChanged();

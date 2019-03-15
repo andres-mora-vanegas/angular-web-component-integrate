@@ -126,6 +126,10 @@ class Modal extends HTMLElement {
     this.isOpen = false;
   }
 
+  sayHello(){
+      console.log('hii');
+  }
+
   _cancel(event) {
     this.hide();
     const cancelEvent = new Event('cancel', { bubbles: true, composed: true });

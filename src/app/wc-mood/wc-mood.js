@@ -33,7 +33,6 @@ class WebComponentsMood extends LitElement {
       }));
     }
   }
-
 }
 
 customElements.define('wc-mood', WebComponentsMood);
